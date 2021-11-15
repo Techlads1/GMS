@@ -1,0 +1,28 @@
+module gateway
+
+go 1.16
+
+require (
+	github.com/dchest/captcha v0.0.0-20200903113550-03f5f0333e1f
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/foolin/goview v0.3.0
+	github.com/go-playground/validator/v10 v10.9.0
+	github.com/golang-migrate/migrate/v4 v4.15.1
+	github.com/gorilla/sessions v1.2.1
+	github.com/jackc/pgtype v1.8.1
+	github.com/jackc/pgx/v4 v4.13.0
+	github.com/johnfercher/maroto v0.33.0
+	github.com/k0kubun/pp v3.0.1+incompatible
+	github.com/labstack/echo v3.3.10+incompatible
+	github.com/labstack/echo-contrib v0.11.0
+	github.com/labstack/echo/v4 v4.6.1
+	github.com/patrickmn/go-cache v2.1.0+incompatible
+	github.com/pkg/errors v0.9.1
+	github.com/signintech/gopdf v0.10.4
+	github.com/spf13/viper v1.9.0
+	github.com/stretchr/testify v1.7.0
+	github.com/yeqown/go-qrcode v1.5.8
+	go.uber.org/zap v1.19.1
+	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+)
