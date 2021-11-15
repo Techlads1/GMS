@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"gateway/package/log"
-	"gateway/services/database"
+
+	//"gateway/services/database"
 	"gateway/webserver"
 	"os"
 	"os/signal"
@@ -34,7 +35,7 @@ func main() {
 	<-stop
 	log.Infoln("GRM is shutting down...  👋 !")
 	fmt.Println("GRM is shutting down .... 👋 !")
-	database.Close()
+	//database.Close()
 
 	go func() {
 		<-stop
