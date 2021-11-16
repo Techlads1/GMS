@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"gateway/package/log"
-
-	//"gateway/services/database"
 	"gateway/webserver"
 	"os"
 	"os/signal"
