@@ -88,7 +88,7 @@ func (c *Client) PostFile(u string, v url.Values, file *multipart.FileHeader) *R
 	req, err := http.NewRequest("POST", u, body)
 	if err != nil {
 		log.Errorf("error preparing the request: %v", err)
-		return err
+		return nil
 	}
 
 	response := &Response{}
