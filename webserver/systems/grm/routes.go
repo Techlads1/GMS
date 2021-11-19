@@ -19,7 +19,7 @@ func WebRouters(app *echo.Echo) {
 	{
 		department.GET("", controllers.Department.Index)             //    /department/index
 		department.GET("/show/:id", controllers.Department.Show)     //    /department/show/[id]
-		department.GET("/edit/:id", controllers.Department.Edit)     //  /department/edit/[id]
+		department.GET("/edit/:id", controllers.Department.Update)   //  /department/edit/[id]
 		department.GET("/delete/:id", controllers.Department.Delete) //  /department/delete/[id]
 	}
 

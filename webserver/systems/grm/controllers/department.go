@@ -27,6 +27,7 @@ type departments struct{}
 func (r *departments) Index(c echo.Context) error {
 	pp.Printf("in the index file...\n")
 
+	//replace this with the actual api to pull department data that will be used to render the index page
 	endPoint := "/departments/list-full"
 
 	resp := systems.AimAPI.Send(endPoint, nil, false)
