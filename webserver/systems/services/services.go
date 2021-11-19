@@ -2,24 +2,13 @@ package services
 
 import (
 	"errors"
-<<<<<<< HEAD
-	"gateway/webserver/auth"
-=======
 	"gateway/services/entity"
 	"gateway/webserver/auth"
 
->>>>>>> 535b773920d458329eabb42f95d69e462a6fbfe9
 	"strconv"
 	"strings"
 	"time"
 
-<<<<<<< HEAD
-	"gateway/services/entity"
-
-	"gateway/webserver/systems/auth/auth"
-
-=======
->>>>>>> 535b773920d458329eabb42f95d69e462a6fbfe9
 	"github.com/labstack/echo/v4"
 	"github.com/patrickmn/go-cache"
 )
