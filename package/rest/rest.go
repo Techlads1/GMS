@@ -7,15 +7,11 @@ import (
 	"encoding/hex"
 	"gateway/package/log"
 	"io/ioutil"
-	"mime/multipart"
 	"net/http"
-	"net/http/httptest"
 	"net/url"
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/labstack/echo/v4"
 )
 
 type Client struct {
@@ -82,32 +78,6 @@ func (c *Client) PostMethod(u string, v url.Values) *Response {
 	response.Body = data
 	return response
 }
-func (c *Client) PostFile(u string, v url.Values, file *multipart.FileHeader) *Response {
-
-	body := strings.NewReader(v.Encode())
-	req, err := http.NewRequest("POST", u, body)
-	if err != nil {
-		log.Errorf("error preparing the request: %v", err)
-		return nil
-	}
-
-	response := &Response{}
-	res, err := http.PostForm(u, v)
-	req.Header.Set("Content-Type", writer.FormDataContentType())
-	if err != nil {
-		log.Errorf("error obtaining post response: %v", err)
-		return response
-	}
-	data, err := ioutil.ReadAll(res.Body)
-	res.Body.Close()
-	if err != nil {
-		log.Errorf("error reading post response body: %v", err)
-		return response
-	}
-	response.StatusCode = res.StatusCode
-	response.Body = data
-	return response
-}
 
 //Send consumes the api
 // endpoint shoud be in this format '/user/list
@@ -132,26 +102,6 @@ func (c *Client) Send(endpoint string, params map[string]string, isPost bool) *R
 		// Get method for public method
 		res = c.GetMethod(u)
 	}
-	return res
-}
-
-func (c *Client) SendFile(endpoint string, params map[string]string, file *multipart.FileHeader) *Response {
-	u := c.url + endpoint
-
-	var res *Response
-
-	urlValues := url.Values{}
-	for k, v := range params {
-		urlValues.Add(k, v)
-	}
-	urlValues.Encode()
-
-	e := echo.New()
-	req := httptest.NewRequest(http.MethodPost, "/endpoint", body)
-	req.Header.Set("Content-Type", writer.FormDataContentType()) // <<< important part
-
-	res = c.PostMethod(u, urlValues)
-
 	return res
 }
 
