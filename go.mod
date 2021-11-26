@@ -7,6 +7,7 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/foolin/goview v0.3.0
 	github.com/go-playground/validator/v10 v10.9.0
+	github.com/golang-migrate/migrate/v4 v4.15.1 // indirect
 	github.com/gorilla/sessions v1.2.1
 	github.com/jackc/pgx/v4 v4.13.0
 	github.com/johnfercher/maroto v0.33.0
