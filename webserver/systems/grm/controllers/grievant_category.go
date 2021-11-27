@@ -8,6 +8,7 @@ import (
 	//"fmt"
 	"gateway/webserver/services"
 	"gateway/webserver/systems/grm/models"
+	"gateway/webserver/systems/grm/repositories"
 	"net/http"
 
 	"github.com/k0kubun/pp"
@@ -21,7 +22,7 @@ const grievantCategoryViewPath = "/grm/views/grievant_category/"
 var GrievantCategory grievantCategoryHandler
 
 type grievantCategoryHandler struct{
-	grievantCategoryRepository models.GrievantCategoryRepository
+	
 }
 
 //Index this is a landing page
@@ -29,7 +30,9 @@ func (handler *grievantCategoryHandler) Index(c echo.Context) error {
 
 	pp.Printf("in the index file...\n")
 
-	grievant_categories, err := handler.grievantCategoryRepository.All()
+	service := repositories.NewGrievantCategoryRepository()
+
+	grievant_categories, err := service.All()
 
 	if err != nil {
 		pp.Printf("error decoding json data: %v\n", err)
@@ -42,8 +45,8 @@ func (handler *grievantCategoryHandler) Index(c echo.Context) error {
 		"error": err,
 	}
 
-	return c.JSON(http.StatusOK,data)
-	// return c.Render(http.StatusOK, grievantCategoryViewPath+"index", services.Serve(c, data))
+	// return c.JSON(http.StatusOK,data)
+	return c.Render(http.StatusOK, grievantCategoryViewPath+"index", services.Serve(c, data))
 
 }
 
@@ -66,6 +69,8 @@ func (handler *grievantCategoryHandler) Store(c echo.Context) error {
 
 	grievant_category := models.GrievantCategory{}
 
+	service := repositories.NewGrievantCategoryRepository()
+
 	if err := c.Bind(&grievant_category); err != nil {
 		services.SetErrorMessage(c, err.Error())
 		log.Errorf("%s\n", err)
@@ -75,7 +80,7 @@ func (handler *grievantCategoryHandler) Store(c echo.Context) error {
 
 	grievant_category.UpdatedAt = time.Now()
 
-	handler.grievantCategoryRepository.Create(grievant_category)
+	service.Create(grievant_category)
 
 	services.SetInfoMessage(c, "Grievant Category created successfully!")
 
@@ -90,12 +95,14 @@ func (handler *grievantCategoryHandler) Show(c echo.Context) error {
 
 	var grievant_category *models.GrievantCategory
 
+	service := repositories.NewGrievantCategoryRepository()
+
 	if err := c.Bind(&grievant_category); err != nil {
 		log.Errorf("%s\n", err)
 	}
 
 	
-	grievant_category, err := handler.grievantCategoryRepository.Get(grievant_category.Id)
+	grievant_category, err := service.Get(grievant_category.Id)
 	
 	if err != nil {
 		pp.Printf("error retrieving grievant category: %v\n", err)
@@ -119,12 +126,14 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 
 	var grievant_category *models.GrievantCategory
 
+	service := repositories.NewGrievantCategoryRepository()
+
 	if err := c.Bind(&grievant_category); err != nil {
 		log.Errorf("%s\n", err)
 	}
 
 	
-	grievant_category, err := handler.grievantCategoryRepository.Get(grievant_category.Id)
+	grievant_category, err := service.Get(grievant_category.Id)
 	
 	if err != nil {
 		pp.Printf("error retrieving grievant category: %v\n", err)
@@ -144,6 +153,8 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 func (handler *grievantCategoryHandler) Update(c echo.Context) error {
 
 	grievant_category := models.GrievantCategory{}
+
+	service := repositories.NewGrievantCategoryRepository()
 	
 	if err := c.Bind(&grievant_category); err != nil {
 		log.Errorf("%s\n", err)
@@ -151,7 +162,7 @@ func (handler *grievantCategoryHandler) Update(c echo.Context) error {
 
 	grievant_category.UpdatedAt = time.Now()
 
-	data, err := handler.grievantCategoryRepository.Get(grievant_category.Id)
+	data, err := service.Get(grievant_category.Id)
 
 	if util.CheckError(err) {
 		return c.JSON(http.StatusInternalServerError, "error retrieving grievant category")
@@ -162,7 +173,7 @@ func (handler *grievantCategoryHandler) Update(c echo.Context) error {
 	data.Description = grievant_category.Description
 	data.UpdatedAt = time.Now()
 
-	_, err = handler.grievantCategoryRepository.Update(data)
+	_, err = service.Update(data)
 
 	services.SetInfoMessage(c, "Grievant Category updated successfully")
 
@@ -177,11 +188,13 @@ func (handler *grievantCategoryHandler) Delete(c echo.Context) error {
 
 	grievant_category := models.GrievantCategory{}
 
+	service := repositories.NewGrievantCategoryRepository()
+
 	if err := c.Bind(&grievant_category); err != nil {
 		log.Errorf("%s\n", err)
 	}
 
-	handler.grievantCategoryRepository.Delete(grievant_category.Id)
+	service.Delete(grievant_category.Id)
 
 	services.SetInfoMessage(c, "Grievant Category deleted successfully")
 

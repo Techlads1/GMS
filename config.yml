@@ -10,7 +10,7 @@ dicomserver:
   filepath: ./storage/dicom/
  
 database:
- name: aim
+ name: grm
  user: postgres
  password: password
 
