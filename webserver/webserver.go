@@ -18,6 +18,8 @@ func StartWebserver() {
 	//Disable echo banner
 	e.HideBanner = true
 
+	e.Static("/", "webserver/public")
+
 	// Routes
 	routes.Routers(e)
 

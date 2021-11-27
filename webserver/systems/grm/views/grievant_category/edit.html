@@ -1,0 +1,53 @@
+{{define "css"}}
+
+{{ end }}
+
+{{define "content"}}
+
+          <!-- content to be displayed here -->
+          {{ if .errors }}
+            {{range $index, $value := .errors}}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ $value  }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{end}}
+          {{end}}
+
+          <div class="card">
+            <div class="card-header">
+              <h3  class="my-1 float-left">&nbsp;<i class="fas fa-edit"></i>&nbsp;{{ .title }}</h3>
+                <div class="btn-group btn-group-sm float-right" role="group">
+                    <a href="/users" class="btn btn-primary" title="List All">
+                        <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+                    </a>
+                  
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form action="/users/update"  method="post" class="form">
+                 <input type="hidden" name="csrf" value="{{ .csrf }}">
+                  <input type="hidden" name="id" value="{{ .data.ID }}">
+
+                  {{include "services/authentication/view/user/form"}}
+                  
+                    <div class="form-group">
+                      <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-primary" type="submit"  class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+  {{end}}
+
+{{define "js"}}
+
+{{ end }}
