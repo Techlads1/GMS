@@ -84,7 +84,7 @@ func (handler *grievantCategoryHandler) Store(c echo.Context) error {
 
 	services.SetInfoMessage(c, "Grievant Category created successfully!")
 
-	return c.Redirect(http.StatusSeeOther, grievantCategoryViewPath +"index")
+	return c.Redirect(http.StatusSeeOther, "/grm/grievant_categories")
 
 }
 
@@ -93,7 +93,7 @@ func (handler *grievantCategoryHandler) Show(c echo.Context) error {
 
 	pp.Println("in the update file...")
 
-	var grievant_category *models.GrievantCategory
+	var grievant_category models.GrievantCategory
 
 	service := repositories.NewGrievantCategoryRepository()
 
@@ -101,7 +101,6 @@ func (handler *grievantCategoryHandler) Show(c echo.Context) error {
 		log.Errorf("%s\n", err)
 	}
 
-	
 	grievant_category, err := service.Get(grievant_category.Id)
 	
 	if err != nil {
@@ -124,7 +123,7 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 
 	pp.Println("in the update file...")
 
-	var grievant_category *models.GrievantCategory
+	var grievant_category models.GrievantCategory
 
 	service := repositories.NewGrievantCategoryRepository()
 
@@ -132,7 +131,6 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 		log.Errorf("%s\n", err)
 	}
 
-	
 	grievant_category, err := service.Get(grievant_category.Id)
 	
 	if err != nil {
@@ -142,7 +140,7 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 
 	data := services.Map{
 		"data": grievant_category,
-		"title": "Create New Grievant Category",
+		"title": "Edit Grievant Category",
 		"new":   false,
 	}
 
@@ -151,7 +149,7 @@ func (handler *grievantCategoryHandler) Edit(c echo.Context) error {
 }
 
 func (handler *grievantCategoryHandler) Update(c echo.Context) error {
-
+	pp.Println("in the update file...")
 	grievant_category := models.GrievantCategory{}
 
 	service := repositories.NewGrievantCategoryRepository()
@@ -173,11 +171,11 @@ func (handler *grievantCategoryHandler) Update(c echo.Context) error {
 	data.Description = grievant_category.Description
 	data.UpdatedAt = time.Now()
 
-	_, err = service.Update(data)
-
+	_, err = service.Update(&data)
+	pp.Println(err)
 	services.SetInfoMessage(c, "Grievant Category updated successfully")
 
-	return c.Redirect(http.StatusSeeOther, grievantCategoryViewPath +"index")
+	return c.Redirect(http.StatusSeeOther, "/grm/grievant_categories")
 
 }
 
@@ -198,7 +196,7 @@ func (handler *grievantCategoryHandler) Delete(c echo.Context) error {
 
 	services.SetInfoMessage(c, "Grievant Category deleted successfully")
 
-	return c.Redirect(http.StatusSeeOther, grievantCategoryViewPath +"index")
+	return c.Redirect(http.StatusSeeOther,  "/grm/grievant_categories")
 
 }
 

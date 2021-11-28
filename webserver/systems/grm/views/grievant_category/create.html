@@ -29,9 +29,9 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 class="my-1 float-left"><i class="fas fa-info-circle blue"></i>&nbsp;{{ .title }}</h3>
+        <h5 class="my-1 float-left"><i class="fas fa-info-circle blue"></i>&nbsp;{{ .title }}</h5>
         <div class="btn-group btn-group-sm float-right" role="group">
-            <a href="/aim/department" class="btn btn-primary" title="List All">
+            <a href="/grm/grievant_categories" class="btn btn-primary" title="List All">
                 <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
             </a>
         </div>
@@ -40,8 +40,8 @@
 
     <div class="card-body">
         <div class="col-md-12">
-            <form action="/aim/department/create-department" method="post" class="form">
-                {{include "/grm/views/department/form"}}
+            <form action="/grm/grievant_categories/store" method="post" class="form">
+                {{include "/grm/views/grievant_category/form"}}
 
                 <div class="form-group">
                     <div class="col-md-6">

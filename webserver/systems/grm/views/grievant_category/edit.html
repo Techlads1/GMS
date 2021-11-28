@@ -18,9 +18,9 @@
 
           <div class="card">
             <div class="card-header">
-              <h3  class="my-1 float-left">&nbsp;<i class="fas fa-edit"></i>&nbsp;{{ .title }}</h3>
+              <h5  class="my-1 float-left">&nbsp;<i class="fas fa-edit"></i>&nbsp;{{ .title }}</h5>
                 <div class="btn-group btn-group-sm float-right" role="group">
-                    <a href="/users" class="btn btn-primary" title="List All">
+                    <a href="/grm/grievant_categories" class="btn btn-primary" title="List All">
                         <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
                     </a>
                   
@@ -28,11 +28,12 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form action="/users/update"  method="post" class="form">
+                <form action="/grm/grievant_categories/update/{{ .data.Id }}"  method="post" class="form">
                  <input type="hidden" name="csrf" value="{{ .csrf }}">
-                  <input type="hidden" name="id" value="{{ .data.ID }}">
+                  <input type="hidden" name="id" value="{{ .data.Id }}">
+                  <input type="hidden" name="_method" value="PUT">
 
-                  {{include "services/authentication/view/user/form"}}
+                  {{include "/grm/views/grievant_category/form"}}
                   
                     <div class="form-group">
                       <div class="col-md-offset-2 col-md-10">

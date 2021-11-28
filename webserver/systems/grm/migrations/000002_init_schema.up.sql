@@ -1,6 +1,6 @@
  CREATE TABLE IF NOT EXISTS grievant_categories
              (
-                          id   INT NOT NULL,
+                          id   SERIAL,
                           name VARCHAR (200) NULL,
                           description TEXT NULL,
                           created_at timestamp (0) NULL,
@@ -9,7 +9,7 @@
              );
 CREATE TABLE IF NOT EXISTS grievants
              (
-                          id                   INT NOT NULL,
+                          id                   SERIAL,
                           grievant_category_id INT NOT NULL,
                           user_id              INT NOT NULL,
                           created_at timestamp (0) NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS grievants
              );
 CREATE TABLE IF NOT EXISTS grievants_groups
              (
-                          id   INT NOT NULL,
+                          id   SERIAL,
                           name VARCHAR (200) NULL,
                           description TEXT NULL,
                           created_at timestamp (0) NULL,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS grievants_groups_has_grievants
              );
 CREATE TABLE IF NOT EXISTS grievance_filing_modes
              (
-                          id        INT NOT NULL,
+                          id        SERIAL,
                           name      VARCHAR (200) NULL,
                           code_name VARCHAR (45) NULL,
                           description TEXT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS grievance_filing_modes
              );
 CREATE TABLE IF NOT EXISTS grievance_categories
              (
-                          id        INT NOT NULL,
+                          id        SERIAL,
                           name      VARCHAR (200) NULL,
                           code_name VARCHAR (45) NULL,
                           description TEXT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS grievance_categories
              );
 CREATE TABLE IF NOT EXISTS grievance_sub_categories
              (
-                          id        INT NOT NULL,
+                          id        SERIAL,
                           name      VARCHAR (200) NULL,
                           code_name VARCHAR (45) NULL,
                           description TEXT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS grievance_sub_categories
              );
 CREATE TABLE IF NOT EXISTS grievances
              (
-                          id               INT NOT NULL,
+                          id               SERIAL,
                           location_occured VARCHAR (255) NULL,
                           description TEXT NULL,
                           comments TEXT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS grievances
              );
 CREATE TABLE IF NOT EXISTS grievance_appeals
              (
-                          id               INT NOT NULL,
+                          id               SERIAL,
                           reference_number VARCHAR (200) NOT NULL UNIQUE,
                           home_email       VARCHAR (255) NULL,
                           workplace_email  VARCHAR (255) NULL,
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS grievance_appeals
              );
 CREATE TABLE IF NOT EXISTS appeal_reasons
              (
-                          id   INT NOT NULL,
+                          id   SERIAL,
                           name VARCHAR (200) NULL,
                           description TEXT NULL,
                           created_at timestamp (0) NULL,
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS grievance_appeals_has_appeal_reasons
              );
 CREATE TABLE IF NOT EXISTS grievances_attachments
              (
-                          id              INT NOT NULL,
+                          id              SERIAL,
                           attachable_id   INT NULL,
                           attachable_type VARCHAR (200) NULL,
                           created_at timestamp (0) NULL,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS grievances_attachments
              );
 CREATE TABLE IF NOT EXISTS grievance_states
              (
-                          id   INT NOT NULL,
+                          id   SERIAL,
                           name VARCHAR (200) NULL,
                           description TEXT NULL,
                           created_at timestamp (0) NULL,
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS grievance_states
              );
 CREATE TABLE IF NOT EXISTS grievances_has_states
              (
-                          id                 INT NOT NULL,
+                          id                 SERIAL,
                           grievance_id       INT REFERENCES grievances (id),
                           grievance_state_id INT REFERENCES grievance_states (id),
                           status             VARCHAR (45) NULL,
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS grievances_has_states
              );
 CREATE TABLE IF NOT EXISTS grievance_state_actions
              (
-                          id   INT NOT NULL,
+                          id   SERIAL,
                           name VARCHAR (45) NULL,
                           created_at timestamp (0) NULL,
                           updated_at timestamp (0) NULL,
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS grievance_state_actions
              );
 CREATE TABLE IF NOT EXISTS state_transitions
              (
-                          id            INT NOT NULL,
+                          id            SERIAL,
                           from_state_id INT NULL,
                           to_state_id   INT NULL,
                           created_at timestamp (0) NULL,
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS state_transitions
              );
 CREATE TABLE IF NOT EXISTS state_transtion_actions
              (
-                          id INT NOT NULL,
+                          id SERIAL,
                           description TEXT NULL,
                           created_at timestamp (0) NULL,
                           updated_at timestamp (0) NULL,

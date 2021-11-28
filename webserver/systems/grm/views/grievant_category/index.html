@@ -33,9 +33,9 @@
 <div class="card">
     <div class="card-header">
 
-        <h3 class="my-1 float-left"><i class="fas fa-info-circle blue"></i>&nbsp;All Departments</h3>
+        <h6 class="my-1 float-left"><i class="fas fa-info-circle blue text-small"></i>&nbsp;Grievant Categories</h5>
         <div class="btn-group btn-group-sm float-right" role="group">
-            <a href="/aim/department/create" class="btn btn-success" title="Add New">
+            <a href="/grm/grievant_categories/create" class="btn btn-success" title="Add New">
                 <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
             </a>
 
@@ -48,10 +48,9 @@
             <thead>
             <tr>
                 <th>S/no</th>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Description</th>
-                <th>Size</th>
-                <th>Campus</th>
+                <th>Created At</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -59,26 +58,26 @@
             {{range $index, $value := .data}}
             <tr>
                 <td scope="row">{{add $index 1}}</td>
-                <td>{{$value.DepartmentTitle}}</td>
-                <td>{{$value.DepartmentDescription}}</td>
-                <td>{{$value.DepartmentSize}}</td>
-                <td>{{$value.CampusTitle}}</td>
+                <td>{{$value.Name}}</td>
+                <td>{{$value.Description}}</td>
+                <td>{{$value.CreatedAt}}</td>
                 <td>
                     <div class="btn-group btn-group-sm float-right" role="group">
 
-                        <form action="/aim/department/show" method="post">
-                            <button name="id" value="{{ $value.Id }}" class="btn btn-info btn-sm mr-2" title="Show">
+                        <a href="/grm/grievant_categories/show/{{ $value.Id }}" >
+                            <button name="id" value="" class="btn btn-info btn-sm mr-2" title="Show">
                                 <i class=" fas fa-fw fa-eye" aria-hidden="true"></i>
                             </button>
-                        </form>
-                        <form action="/aim/department/update" method="post">
+                        </a>
+                        <a href="/grm/grievant_categories/edit/{{ $value.Id }}">
                             <button name="id" value="{{ $value.Id }}" class="btn btn-primary btn-sm mr-2" title="Update">
                                 <i class=" fas fa-fw fa-pencil-alt fa-sm" aria-hidden="true"></i>
                             </button>
-                        </form>
-                        <form action="/aim/department/delete" method="post">
-                            <button name="id" value="{{ $value.Id }}" class="btn btn-danger btn-sm" title="Delete"
-                                    onclick="return confirm('Are you sure?')">
+                        </a>
+                        <form  action="/grm/grievant_categories/delete/{{ $value.Id }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE"/>
+                            <button type="submit"  class="btn btn-danger btn-sm" title="Delete"
+                                    onsubmit="return confirm('Are you sure?')">
                                 <i class=" fas fa-fw fa-trash-alt" aria-hidden="true"></i>
                             </button>
                         </form>

@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS grievants;
-
 DROP TABLE IF EXISTS grievants_groups;
 
 DROP TABLE IF EXISTS grievants_groups_has_grievants;
@@ -11,6 +9,8 @@ DROP TABLE IF EXISTS grievance_categories;
 DROP TABLE IF EXISTS grievance_sub_categories;
 
 DROP TABLE IF EXISTS grievances;
+
+DROP TABLE IF EXISTS grievants;
 
 DROP TABLE IF EXISTS grievance_appeals;
 

@@ -40,8 +40,8 @@ func (connect *GrievantCategoryRepository) Create(arg models.GrievantCategory) (
 	var Id int
 
 	query := "INSERT INTO grievant_categories " +
-		"(name, description, update_at, created_at) " +
-		"VALUES($1,$2,$3,$4,$5) " +
+		"(name, description, updated_at, created_at) " +
+		"VALUES($1,$2,$3,$4) " +
 		"RETURNING id"
 
 	err := connect.db.QueryRow(context.Background(), query,
@@ -53,7 +53,7 @@ func (connect *GrievantCategoryRepository) Create(arg models.GrievantCategory) (
 }
 
 //Get gets single Department
-func (connect *GrievantCategoryRepository) Get(id int) (*models.GrievantCategory, error) {
+func (connect *GrievantCategoryRepository) Get(id int) (models.GrievantCategory, error) {
 
 	var query = "SELECT name, description, updated_at, created_at FROM grievant_categories WHERE id = $1"
 
@@ -65,18 +65,18 @@ func (connect *GrievantCategoryRepository) Get(id int) (*models.GrievantCategory
 		Scan(&data.Name, &data.Description, &data.UpdatedAt, &data.CreatedAt)
 
 	if err != nil {
-		return nil, err
+		return data, err
 	}
 
-	return &data, err
+	return data, err
 
 }
 
 //Update for updating Department
 func (connect *GrievantCategoryRepository) Update(arg *models.GrievantCategory) (int, error) {
 
-	query := "UPDATE grievant_categories SET name = $1, description = $2, code_name = $3, updated_at = $4" +
-		" WHERE id = $7"
+	query := "UPDATE grievant_categories SET name = $1, description = $2, updated_at = $3" +
+		" WHERE id = $4"
 
 	_, err := connect.db.Exec(context.Background(), query, arg.Name,
 		arg.Description, time.Now(), arg.Id)

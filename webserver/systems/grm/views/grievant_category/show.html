@@ -33,13 +33,13 @@
 <div class="card">
     <div class="card-header">
 
-        <h3  class="my-1 float-left"> <i class="fas fa-info-circle blue"></i>&nbsp;Details for {{.data.DepartmentTitle}}</h3>
+        <h5  class="my-1 float-left"> <i class="fas fa-info-circle blue"></i>&nbsp;Details for {{.data.Name}}</h5>
 
         <div class="btn-group btn-group-sm float-right" role="group">
-            <a href="/aim/department" class="btn btn-primary mr-2" title="List All">
+            <a href="/grm/grievant_categories" class="btn btn-primary mr-2" title="List All">
                 <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
             </a>
-            <a href="/aim/department/create" class="btn btn-success" title="Add New">
+            <a href="/grm/grievant_categories/create" class="btn btn-success" title="Add New">
                 <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
             </a>
         </div>
@@ -48,11 +48,9 @@
     <!-- /.card-header -->
     <div class="card-body">
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b>Department :</b> {{ .data.DepartmentTitle}}</li>
-            <li class="list-group-item"><b>Descriptions :</b> {{ .data.DepartmentDescription}}</li>
-            <li class="list-group-item"><b>Department Size :</b> {{ .data.DepartmentSize}}</li>
-            <li class="list-group-item"><b>Campus :</b> {{ .data.CampusTitle}}</li>
-            <li class="list-group-item"><b>Created By:</b> {{ .data.CreatedBy}}</li>
+            <li class="list-group-item"><b>Grievant Category Name :</b> {{ .data.Name}}</li>
+            <li class="list-group-item"><b>Grievant Category Descriptions :</b> {{ .data.Description}}</li>
+            <li class="list-group-item"><b>Updated At:</b> {{ .data.UpdatedAt}}</li>
             <li class="list-group-item"><b>Created At:</b> {{ .data.CreatedAt}}</li>
         </ul>
     </div>
