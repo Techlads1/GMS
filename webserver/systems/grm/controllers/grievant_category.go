@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"gateway/package/log"
 	"gateway/package/util"
 	"time"
@@ -74,6 +75,13 @@ func (handler *grievantCategoryHandler) Store(c echo.Context) error {
 	if err := c.Bind(&grievant_category); err != nil {
 		services.SetErrorMessage(c, err.Error())
 		log.Errorf("%s\n", err)
+	}
+
+	if err := c.Validate(&grievant_category); err != nil {
+		services.SetErrorMessage(c, err.Error())
+		log.Errorf("%s\n", err)
+
+		return c.Redirect(http.StatusSeeOther, "/grm/grievant_categories/create")
 	}
 
 	grievant_category.CreatedAt = time.Now()
@@ -156,6 +164,13 @@ func (handler *grievantCategoryHandler) Update(c echo.Context) error {
 	
 	if err := c.Bind(&grievant_category); err != nil {
 		log.Errorf("%s\n", err)
+	}
+
+	if err := c.Validate(&grievant_category); err != nil {
+		services.SetErrorMessage(c, err.Error())
+		log.Errorf("%s\n", err)
+
+		return c.Redirect(http.StatusSeeOther, "/grm/grievant_categories/edit/" + fmt.Sprint(grievant_category.Id))
 	}
 
 	grievant_category.UpdatedAt = time.Now()
