@@ -11,7 +11,7 @@ import (
 //TODO: move thes into config.yml configuration file
 const (
 	AIMURL  = "http://192.168.1.103:4322/aim/api/v1"
-	GRMURL  = "http://localhost:4323/auth/api/v1"
+	GRMURL  = "http://localhost:4321/api/v1/grm"
 	SOMAURL = "http://localhost:4321/"
 )
 
@@ -21,5 +21,5 @@ var GRMAPI *rest.Client
 func Init() {
 	pp.Printf("api client initalised")
 	AimAPI = rest.New(AIMURL)
-	GRMAPI = rest.New(AIMURL)
+	GRMAPI = rest.New(GRMURL)
 }
