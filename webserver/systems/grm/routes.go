@@ -126,6 +126,17 @@ func WebRouters(app *echo.Echo) {
 		grievance_state_transitions.DELETE("/delete/:id", controllers.GrievanceStateTransition.Delete) 
 	}
 
+	grievances := grmApp.Group("/grievances")
+	{
+		grievances.GET("", controllers.Grievance.Index)
+		grievances.GET("/create", controllers.Grievance.Create)  
+		grievances.POST("/store", controllers.Grievance.Store)
+		grievances.GET("/show/:id", controllers.Grievance.Show) 
+		grievances.GET("/edit/:id", controllers.Grievance.Edit)  
+		grievances.PUT("/update/:id", controllers.Grievance.Update) 
+		grievances.DELETE("/delete/:id", controllers.Grievance.Delete) 
+	}
+
 	//put here all your web routes
 
 }

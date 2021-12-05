@@ -1,0 +1,65 @@
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Grievance Title</label>
+    <div class="col-md-12">
+        <input type="input" name="name" class="form-control" aria-describedby="Name"
+               value="{{ .data.Name }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Grievance Description</label>
+    <div class="col-md-12">
+        <textarea name="description" class="form-control" id="grievance-description" aria-describedby="Description"
+               >{{ .data.Description }}</textarea>
+               
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Grievance Location Occurred</label>
+    <div class="col-md-12">
+        <input type="input" name="location_occurred" class="form-control" aria-describedby="LocationOccurred"
+               value="{{ .data.LocationOccurred }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Choose Grievance Filling Mode</label>
+    <div class="col-md-12">
+        <select class="form-control" name="filling_mode_id">
+            <option value="{{ .filling_mode.Id}}" selected>{{ .filling_mode.Name}}</option>
+            {{range $value := .filling_modes}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Choose Grievance Sub Category</label>
+    <div class="col-md-12">
+        <select class="form-control" name="grievance_sub_category_id">
+            <option value="{{ .grievance_sub_category.Id}}" selected>{{ .grievance_sub_category.Name}}</option>
+            {{range $value := .grievance_sub_categories}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-12 control-label">Choose Grievant Group (Optional)</label>
+    <small>&nbsp;<a href="#"> &nbsp;&nbsp;Visit this link if you want to create grievant group</a></small>
+    <div class="col-md-12">
+        <select class="form-control" name="grievant_group_id">
+            <option value="{{ .grievant_group.Id}}" selected>{{ .grievant_group.Name}}</option>
+            {{range $value := .grievant_groups}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
