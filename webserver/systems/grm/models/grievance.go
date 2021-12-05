@@ -3,7 +3,7 @@ package models
 import "time"
 
 type Grievance struct {
-	Id                    	int       `json:"id,omitempty" form:"id" validate:"omitempty,numeric"`
+	Id                    	int       `json:"id,omitempty" param:"id" form:"id" validate:"omitempty,numeric"`
 	Name       							string    `json:"name" form:"name" validate:"required"`
 	ReferenceNumber       	string    `json:"reference_number" form:"reference_number"`
 	Comment       					string    `json:"comment" form:"comment" validate:"required"`

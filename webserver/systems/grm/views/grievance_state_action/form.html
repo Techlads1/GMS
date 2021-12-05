@@ -1,0 +1,29 @@
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance State Action Name</label>
+    <div class="col-md-6">
+        <input type="input" name="name" class="form-control" aria-describedby="Name"
+               value="{{ .data.Name }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance State Action RolePerformAction</label>
+    <div class="col-md-6">
+        <input type="input" name="role_perform_action" class="form-control" aria-describedby="RolePerformAction"
+               value="{{ .data.RolePerformAction }}">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-6 control-label">Choose Grievance State</label>
+    <div class="col-md-6">
+        <select class="form-control" name="state_id">
+            <option value="{{ .grievance_state.Id}}" selected>{{ .grievance_state.Name}}</option>
+            {{range $value := .grievance_states}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
+

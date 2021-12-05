@@ -1,0 +1,25 @@
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance Category Name</label>
+    <div class="col-md-6">
+        <input type="input" name="name" class="form-control" aria-describedby="Name"
+               value="{{ .data.Name }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance Category Code Name</label>
+    <div class="col-md-6">
+        <input type="input" name="code_name" class="form-control" aria-describedby="CodeName"
+               value="{{ .data.CodeName }}">
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance Category Description</label>
+    <div class="col-md-6">
+        <textarea name="description" class="form-control" aria-describedby="Description"
+               >{{ .data.Description }}</textarea>
+               
+    </div>
+</div>
