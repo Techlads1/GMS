@@ -137,6 +137,13 @@ func WebRouters(app *echo.Echo) {
 		grievances.DELETE("/delete/:id", controllers.Grievance.Delete) 
 	}
 
+	dashboards := grmApp.Group("/dashboard")
+	{
+		dashboards.GET("", controllers.Dashboard.Index)
+		
+	}
+
+
 	//put here all your web routes
 
 }
