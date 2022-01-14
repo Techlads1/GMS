@@ -10,9 +10,9 @@ dicomserver:
   filepath: ./storage/dicom/
  
 database:
- name: grm
- user: postgres
- password: emao
+ name: gms
+ user: user
+ password: admin
 
 secret: 
   secret : 0ifp5bw(!1j8bq#2bwd24)bn!0$gco6hhoce^!7tmprdaf$1z7

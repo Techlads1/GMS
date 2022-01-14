@@ -11,9 +11,11 @@ import (
 //Renderer fetches the template render
 func Renderer() *echoview.ViewEngine {
 	gvc := goview.Config{
+		
 		Root:      "webserver/systems",
 		Extension: ".html",
 		Master:    "layouts/master",
+		
 		Funcs: template.FuncMap{
 			"sub": func(a, b int) int {
 				return a - b

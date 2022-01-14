@@ -1,0 +1,69 @@
+<div class="form-group row">
+    <label for="Name" class="col-sm-3 col-form-label">Name <small>(Optional)</small></label>
+    <div class="col-sm-9">
+        <input type="text" class="form-control" id="Name" placeholder="Enter Name..." />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="Phone_Number" class="col-sm-3 col-form-label">Phone Number <small>(Optional)</small></label>
+    <div class="col-sm-9">
+        <input type="tel" id="grv_phone" class="form-control" pattern="[0-9]{10}" placeholder="Enter Phone Number..."
+            maxlength="13" />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="Email" class="col-sm-3 col-form-label">Email <small>(Optional)</small></label>
+    <div class="col-sm-9">
+        <input type="email" id="grv_email" class="form-control" placeholder="Enter Email Address..." />
+    </div>
+</div>
+
+<hr />
+
+<div class="form-group row">
+    <label for="Subject" class="col-sm-3 col-form-label">Subject of Inquiry or Grievance <span
+            style="color: red">*</span></label>
+    <div class="col-sm-9">
+        <input type="text" id="grv_subject" class="form-control" placeholder="Subject of Inquiry/Grievance..."
+            required />
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="grievance-description" class="col-sm-12 col-form-label">Description of Inquiry or Grievance <span
+            style="color: red">*</span>
+        <small>
+            <p>(Provide as much details and facts as possible)</p>
+        </small>
+    </label>
+    <div class="col-sm-12">
+        <textarea id="grievance-description" required></textarea>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="grv_attachements" class="col-sm-3 col-form-label">Attachments <small>(If any)</small></label>
+    <div class="col-sm-9">
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="grv_attachements" name="" multiple="" />
+                <label class="custom-file-label" for="grv_attachements">Choose file(s)</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text">Upload</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="Comments" class="col-sm-3 col-form-label">Other Comments</label>
+    <div class="col-sm-9">
+        <div class="form-group">
+            <textarea class="form-control" id="grv_comments" name=""
+                placeholder="Your feedbacks and comments are much valuable..."></textarea>
+        </div>
+    </div>
+</div>
