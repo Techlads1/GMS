@@ -32,15 +32,26 @@
 <!-- content to be displayed here -->
 <div class="card">
     <div class="card-header">
-
-        <h6 class="my-1 float-left"><i class="fas fa-info-circle blue text-small"></i>&nbsp;Grievances</h5>
+        <h5 class="my-1 float-left">
+            <i class="fas fa-info-circle blue text-small"></i>
+            &nbsp;Grievances
+        </h5>
         <div class="btn-group btn-group-sm float-right" role="group">
             <a href="/grm/grievances/create" class="btn btn-success" title="Add New">
                 <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
             </a>
-
         </div>
-
+        <div class="btn-group btn-group-sm float-right dropleft mx-2" role="group">
+            <button type="button" class="btn btn-info dropdown-toggle" title="Add New" data-toggle="dropdown">
+                <i class=" fas fa-fw fa-plus" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu dropleft" role="menu">
+                <a class="dropdown-item" href="/grm/grievances/create">Form User</a>
+                <a class="dropdown-item" href="/grm/grievances/createAnonymous">Form Anonymous</a>
+                <a class="dropdown-item" href="/grm/grievances/createOfficer">Form Officer</a>
+                <a class="dropdown-item" href="/grm/grievances/createAppeal">Form Appeal</a>
+            </div>
+        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body">

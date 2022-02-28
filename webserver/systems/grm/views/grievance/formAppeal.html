@@ -1,0 +1,148 @@
+<div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="grv_name" class="col-sm-4 col-form-label">Name
+        </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control form-control-border" id="grv_name" value="John Doe"
+                 placeholder="" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="grv_gender" class="col-sm-4 col-form-label">Gender</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control form-control-border" id="grv_gender" value="Male"
+                 placeholder="" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="grv_email" class="col-sm-4 col-form-label">Email</label>
+        <div class="col-sm-8">
+          <input type="email" id="grv_email" class="form-control form-control-border" value="johndoe@email.com"
+                 placeholder="" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group row">
+        <label for="grv_phone" class="col-sm-4 col-form-label">Phone Number</label>
+        <div class="col-sm-8">
+          <input type="tel" id="grv_phone" class="form-control" value="555 8595 22848" placeholder="" readonly>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label for="grv_address" class="col-sm-4 col-form-label">Address</label>
+                <div class="col-sm-8">
+                    <input type="text" id="grv_address" class="form-control"
+                           placeholder="Grievant Home/Work Address">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label for="grv_appealDate" class="col-sm-4 col-form-label">Date Appeal Submited<span
+                        style="color: red;">*</span></label>
+                <div class="col-sm-8">
+                    <div class="input-group date" id="grv_appealDate" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input"
+                               data-target="#grv_appealDate"
+                               required>
+                        <div class="input-group-append" data-target="#grv_appealDate"
+                             data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="d-block">Reason for appeal <small>(check all that apply)</small></label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="newInformation" value="newInformation">
+            <label for="newInformation" class="form-check-label">New information/evidence is now available that
+                wasn’t considered before</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="notProcessed" value="notProcessed">
+            <label for="notProcessed" class="form-check-label">The process wasn’t followed correctly</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="unfairOutcome" value="unfairOutcome">
+            <label for="unfairOutcome" class="form-check-label">The outcome wasn’t fair and reasonable</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="OtherChk" value="Other">
+            <label for="OtherTxt" class="form-check-label">Other</label>
+            <input type="text" class="form-control mx-2" id="OtherTxt" placeholder="">
+        </div>
+    </div>
+    
+  <hr/>
+
+  <div class="form-group row">
+    <label for="furtherExplanation" class="col-sm-12 col-form-label">Further explanation of reasoning
+      <small>
+        <p>(Use attachments if necessary)</p>
+      </small>
+    </label>
+    <div class="col-sm-12">
+      <textarea class="summernote" id="furtherExplanation"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="desiredOutcome" class="col-sm-12 col-form-label">Desired outcome
+      <small>
+        <p>(Use attachments if necessary)</p>
+      </small>
+    </label>
+    <div class="col-sm-12">
+      <textarea class="summernote" id="desiredOutcome"></textarea>
+    </div>
+  </div>
+
+  <!--<div class="form-group row">
+    <label for="grv_attachements" class="col-sm-3 col-form-label">Attachments
+      <small>(If any)</small>
+    </label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="grv_attachements" name=""
+                 multiple="">
+          <label class="custom-file-label" for="grv_attachements">Choose
+            file(s)</label>
+        </div>
+        <div class="input-group-append">
+          <span class="input-group-text">Upload</span>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="form-group row">
+    <label for="grv_comments" class="col-sm-3 col-form-label">Other Comments</label>
+    <div class="col-sm-9">
+      <div class="form-group">
+        <textarea class="form-control" id="grv_comments" name=""
+                  placeholder="Your feedbacks and comments are much valuable..."></textarea>
+      </div>
+    </div>
+  </div>

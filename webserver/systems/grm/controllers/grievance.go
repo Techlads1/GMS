@@ -62,20 +62,79 @@ func (handler *grievanceHandler) Create(c echo.Context) error {
 
 	pp.Println("in the create file...\n")
 
-	grievance_sub_categories,_ := handler.FetchAllGrievanceSubCategories()
-	filling_modes,_ := handler.FetchAllGrievanceFillingModes()
-	grievant_groups,_ := handler.FetchAllGrievantGroups()
-
+	grievance_sub_categories, _ := handler.FetchAllGrievanceSubCategories()
+	filling_modes, _ := handler.FetchAllGrievanceFillingModes()
+	grievant_groups, _ := handler.FetchAllGrievantGroups()
 
 	data := services.Map{
-		"title": "Create New Grievance ",
-		"new":   true,
-		"grievant_groups": grievant_groups,
-		"filling_modes": filling_modes,
+		"title":                    "Create New Grievance ",
+		"new":                      true,
+		"grievant_groups":          grievant_groups,
+		"filling_modes":            filling_modes,
 		"grievance_sub_categories": grievance_sub_categories,
 	}
 
 	return c.Render(http.StatusOK, grievanceViewPath+"create", services.Serve(c, data))
+
+}
+
+func (handler *grievanceHandler) CreateAnonymous(c echo.Context) error {
+
+	pp.Println("in the create file...\n")
+
+	grievance_sub_categories, _ := handler.FetchAllGrievanceSubCategories()
+	filling_modes, _ := handler.FetchAllGrievanceFillingModes()
+	grievant_groups, _ := handler.FetchAllGrievantGroups()
+
+	data := services.Map{
+		"title":                    "Grievance/Inquiry Form",
+		"new":                      true,
+		"grievant_groups":          grievant_groups,
+		"filling_modes":            filling_modes,
+		"grievance_sub_categories": grievance_sub_categories,
+	}
+
+	return c.Render(http.StatusOK, grievanceViewPath+"createAnonymous", services.Serve(c, data))
+
+}
+
+func (handler *grievanceHandler) CreateOfficer(c echo.Context) error {
+
+	pp.Println("in the create file...\n")
+
+	grievance_sub_categories, _ := handler.FetchAllGrievanceSubCategories()
+	filling_modes, _ := handler.FetchAllGrievanceFillingModes()
+	grievant_groups, _ := handler.FetchAllGrievantGroups()
+
+	data := services.Map{
+		"title":                    "Grievance/Inquiry Registration Form",
+		"new":                      true,
+		"grievant_groups":          grievant_groups,
+		"filling_modes":            filling_modes,
+		"grievance_sub_categories": grievance_sub_categories,
+	}
+
+	return c.Render(http.StatusOK, grievanceViewPath+"createOfficer", services.Serve(c, data))
+
+}
+
+func (handler *grievanceHandler) CreateAppeal(c echo.Context) error {
+
+	pp.Println("in the create file...\n")
+
+	grievance_sub_categories, _ := handler.FetchAllGrievanceSubCategories()
+	filling_modes, _ := handler.FetchAllGrievanceFillingModes()
+	grievant_groups, _ := handler.FetchAllGrievantGroups()
+
+	data := services.Map{
+		"title":                    "Grievance Appeal Form",
+		"new":                      true,
+		"grievant_groups":          grievant_groups,
+		"filling_modes":            filling_modes,
+		"grievance_sub_categories": grievance_sub_categories,
+	}
+
+	return c.Render(http.StatusOK, grievanceViewPath+"createAppeal", services.Serve(c, data))
 
 }
 
@@ -89,14 +148,14 @@ func (handler *grievanceHandler) Store(c echo.Context) error {
 	}
 
 	endPoint := "/grievances/store"
-pp.Print(grievance)
+	pp.Print(grievance)
 	params := map[string]string{
-		"name":        grievance.Name,
-		"description": grievance.Description,
-		"location_occurred": grievance.LocationOccurred,
-		"filling_mode_id": fmt.Sprintf("%v", grievance.FillingModeId),
+		"name":                      grievance.Name,
+		"description":               grievance.Description,
+		"location_occurred":         grievance.LocationOccurred,
+		"filling_mode_id":           fmt.Sprintf("%v", grievance.FillingModeId),
 		"grievance_sub_category_id": fmt.Sprintf("%v", grievance.GrievanceSubCategoryId),
-		"grievant_group_id": fmt.Sprintf("%v", grievance.GrievantGroupId),
+		"grievant_group_id":         fmt.Sprintf("%v", grievance.GrievantGroupId),
 	}
 
 	resp := systems.GRMAPI.Send(endPoint, params, true)
@@ -178,24 +237,24 @@ func (handler *grievanceHandler) Edit(c echo.Context) error {
 		return err
 	}
 
-	grievance_sub_categories,_ := handler.FetchAllGrievanceSubCategories()
-	filling_modes,_ := handler.FetchAllGrievanceFillingModes()
-	grievant_groups,_ := handler.FetchAllGrievantGroups()
+	grievance_sub_categories, _ := handler.FetchAllGrievanceSubCategories()
+	filling_modes, _ := handler.FetchAllGrievanceFillingModes()
+	grievant_groups, _ := handler.FetchAllGrievantGroups()
 
-	grievance_sub_category,_ := handler.FetchGrievanceSubCategory(grievance.GrievanceSubCategoryId)
-	filling_mode,_ := handler.FetchGrievanceFillingMode(grievance.FillingModeId)
-	grievant_group,_ := handler.FetchGrievantGroup(grievance.GrievantGroupId)
+	grievance_sub_category, _ := handler.FetchGrievanceSubCategory(grievance.GrievanceSubCategoryId)
+	filling_mode, _ := handler.FetchGrievanceFillingMode(grievance.FillingModeId)
+	grievant_group, _ := handler.FetchGrievantGroup(grievance.GrievantGroupId)
 
 	data := services.Map{
-		"data":  grievance,
-		"title": "Edit Grievance ",
-		"new":   false,
-		"grievant_groups": grievant_groups,
-		"filling_modes": filling_modes,
+		"data":                     grievance,
+		"title":                    "Edit Grievance ",
+		"new":                      false,
+		"grievant_groups":          grievant_groups,
+		"filling_modes":            filling_modes,
 		"grievance_sub_categories": grievance_sub_categories,
-		"grievant_group": grievant_group,
-		"filling_mode": filling_mode,
-		"grievance_sub_category": grievance_sub_category,
+		"grievant_group":           grievant_group,
+		"filling_mode":             filling_mode,
+		"grievance_sub_category":   grievance_sub_category,
 	}
 
 	return c.Render(http.StatusOK, grievanceViewPath+"edit", services.Serve(c, data))
@@ -287,9 +346,9 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievance_sub_categories, nil
 
- }
+}
 
- func (handler *grievanceHandler) FetchGrievanceSubCategory(Id int) (models.GrievanceSubCategory, error) {
+func (handler *grievanceHandler) FetchGrievanceSubCategory(Id int) (models.GrievanceSubCategory, error) {
 	var grievance_sub_category models.GrievanceSubCategory
 
 	endPoint := fmt.Sprintf("/grievance_sub_categories/show/%d", Id)
@@ -310,9 +369,9 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievance_sub_category, nil
 
- }
+}
 
- func (handler *grievanceHandler) FetchAllGrievanceFillingModes() ([]models.GrievanceFillingMode, error) {
+func (handler *grievanceHandler) FetchAllGrievanceFillingModes() ([]models.GrievanceFillingMode, error) {
 	endPoint := "/grievance_filling_modes/list"
 
 	resp := systems.GRMAPI.Send(endPoint, nil, false)
@@ -334,9 +393,9 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievance_filling_modes, nil
 
- }
+}
 
- func (handler *grievanceHandler) FetchGrievanceFillingMode(Id int) (models.GrievanceFillingMode, error) {
+func (handler *grievanceHandler) FetchGrievanceFillingMode(Id int) (models.GrievanceFillingMode, error) {
 	var grievance_filling_mode models.GrievanceFillingMode
 
 	endPoint := fmt.Sprintf("/grievance_sub_categories/show/%d", Id)
@@ -357,9 +416,9 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievance_filling_mode, nil
 
- }
+}
 
- func (handler *grievanceHandler) FetchAllGrievantGroups() ([]models.GrievantGroup, error) {
+func (handler *grievanceHandler) FetchAllGrievantGroups() ([]models.GrievantGroup, error) {
 	endPoint := "/grievant_groups/list"
 
 	resp := systems.GRMAPI.Send(endPoint, nil, false)
@@ -381,9 +440,9 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievant_groups, nil
 
- }
+}
 
- func (handler *grievanceHandler) FetchGrievantGroup(Id int) (models.GrievantGroup, error) {
+func (handler *grievanceHandler) FetchGrievantGroup(Id int) (models.GrievantGroup, error) {
 	var grievant_group models.GrievantGroup
 
 	endPoint := fmt.Sprintf("/grievant_groups/show/%d", Id)
@@ -404,4 +463,4 @@ func (handler *grievanceHandler) FetchAllGrievanceSubCategories() ([]models.Grie
 
 	return grievant_group, nil
 
- }
+}

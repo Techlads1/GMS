@@ -2,7 +2,6 @@ package grm
 
 import (
 	"log"
-
 	
 	"gateway/webserver/systems/grm/controllers"
 
@@ -130,6 +129,9 @@ func WebRouters(app *echo.Echo) {
 	{
 		grievances.GET("", controllers.Grievance.Index)
 		grievances.GET("/create", controllers.Grievance.Create)  
+		grievances.GET("/createAnonymous", controllers.Grievance.CreateAnonymous)  
+		grievances.GET("/createOfficer", controllers.Grievance.CreateOfficer)  
+		grievances.GET("/createAppeal", controllers.Grievance.CreateAppeal)  
 		grievances.POST("/store", controllers.Grievance.Store)
 		grievances.GET("/show/:id", controllers.Grievance.Show) 
 		grievances.GET("/edit/:id", controllers.Grievance.Edit)  
@@ -145,5 +147,7 @@ func WebRouters(app *echo.Echo) {
 
 
 	//put here all your web routes
+	
+	
 
 }
