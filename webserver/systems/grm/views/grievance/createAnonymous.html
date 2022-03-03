@@ -115,7 +115,10 @@
 
     <div class="card">
         <div class="card-header">
-            <h5 class="my-1 float-left"><i class="fas fa-info-circle blue"></i>&nbsp;{{ .title }}</h5>
+            <h5 class="my-1 float-left">
+                <i class="fas fa-info-circle blue"></i>
+                &nbsp;{{ .title }} <!-- Grievance/Inquiry Form -->
+            </h5>
             <div class="btn-group btn-group-sm float-right" role="group">
                 <a href="/grm/grievances" class="btn btn-primary" title="List All">
                     <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
@@ -126,12 +129,23 @@
 
         <div class="card-body">
             <div class="col-md-12">
+
+                <p><b>DIT GRM Form I</b></p>
+                <p><b>Instructions:</b> This form is to be completed by the individual sending the inquiry or grievance.
+                </p>
+                <p>The system will not take any information that identifies you, you may want to give the informations
+                    personally.
+                </p>
+                <p>Please fill in all parts with (<span style="color: red; font-weight: bold;">*</span>) as it is
+                    important.
+                </p>
+
                 <form action="/grm/grievances/store" method="post" class="form">
-                    {{include "/grm/views/grievance/form"}}
+                    {{include "/grm/views/grievance/formAnonymous"}}
 
                     <div class="form-group">
                         <div class="col-md-6">
-                            <button type="submit" class="btn btn-primary btn-block">Create</button>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
                         </div>
                     </div>
 
@@ -150,7 +164,7 @@
     $('#grievance-description').summernote({
         placeholder: 'Type your grievance here!',
             tabsize: 2,
-            height: 500
+            height: 250
         });
     });
     </script>
