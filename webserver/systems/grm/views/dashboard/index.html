@@ -5,8 +5,15 @@
 
 
 {{ end }}
+{{define "sidebar"}}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    {{include "layouts/partials/_leftsidebar"}}
+  </aside>
+{{end}}
 
 {{define "content"}}
+
+
 <!-- content to be displayed here -->
 {{ if .infos }}
 {{range $index, $value := .infos}}
@@ -105,7 +112,7 @@
 </section>
 <!-- /.content -->
     <!-- /.card-body -->
-</div>
+
 <!-- /.card -->
 {{end}}
 
