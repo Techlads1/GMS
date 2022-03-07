@@ -48,6 +48,7 @@ func (handler *grievanceHandler) Index(c echo.Context) error {
 		return err
 	}
 
+
 	data := services.Map{
 		"data":  grievances,
 		"total": len(grievances),
@@ -197,6 +198,8 @@ func (handler *grievanceHandler) Edit(c echo.Context) error {
 		"filling_mode": filling_mode,
 		"grievance_sub_category": grievance_sub_category,
 	}
+
+
 
 	return c.Render(http.StatusOK, grievanceViewPath+"edit", services.Serve(c, data))
 

@@ -7,6 +7,7 @@ type GrievanceStateAction struct {
 	Name       						string    `json:"name" form:"name" validate:"required"`
 	RolePerformAction     string    `json:"role_perform_action" form:"role_perform_action" validate:"required"`
 	StateId               int       `json:"state_id,omitempty" form:"state_id" validate:"omitempty,numeric"`
+	SequenceNumber        int       `json:"sequence_number,omitempty" form:"sequence_number" validate:"omitempty,numeric"`
 	UpdatedAt             time.Time `json:"updated_at,omitempty"`
 	CreatedAt             time.Time `json:"created_at,omitempty"`
 }

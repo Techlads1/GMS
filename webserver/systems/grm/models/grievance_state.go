@@ -8,6 +8,7 @@ type GrievanceState struct {
 	CodeName       				string    `json:"code_name" form:"code_name" validate:"required"`
 	Description 					string    `json:"description" form:"description" validate:"required"`
 	Days                  int       `json:"days,omitempty" form:"days" validate:"omitempty,numeric"`
+	SequenceNumber        int       `json:"sequence_number,omitempty" form:"sequence_number" validate:"omitempty,numeric"`
 	UpdatedAt             time.Time `json:"updated_at,omitempty"`
 	CreatedAt             time.Time `json:"created_at,omitempty"`
 }
