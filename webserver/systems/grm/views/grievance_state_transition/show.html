@@ -49,6 +49,7 @@
     <div class="card-body">
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Grievant State Transition Description:</b> {{ .data.Description}}</li>
+            <li class="list-group-item"><b>Grievant State Transition Sequence Number:</b> {{ .data.SequenceNumber}}</li>
             <li class="list-group-item"><b>Grievance From State :</b><a href="/grm/grievance_states/show/{{.data.FromStateId}}"> View</a></li>
             <li class="list-group-item"><b>Grievance To State :</b><a href="/grm/grievance_states/show/{{.data.ToStateId}}"> View</a></li>
             <li class="list-group-item"><b>Updated At:</b> {{ .data.UpdatedAt}}</li>
