@@ -193,6 +193,16 @@ func WebRouters(app *echo.Echo) {
 		login.GET("/registration", controllers.Login.Registration)
 	}
 
+	forgot := grmApp.Group("/forgot")
+	{
+		forgot.GET("", controllers.Forgot.Index)
+	}
+
+	reset := grmApp.Group("/reset")
+	{
+		reset.GET("", controllers.Reset.Index)
+	}
+
 	//put here all your web routes
 
 }
