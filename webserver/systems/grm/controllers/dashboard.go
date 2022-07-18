@@ -91,5 +91,5 @@ func (r *complainantdashboards) Index(c echo.Context) error {
 		"error": nil,
 	}
 
-	return c.Render(http.StatusOK, complainantdashboardViewPath+"index.html", services.Serve(c, data))
+	return c.Render(http.StatusOK, complainantdashboardViewPath+"index", services.Serve(c, data))
 }

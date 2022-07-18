@@ -17,13 +17,11 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-
 const grievanceAppealReasonViewPath = "/grm/views/grievance_appeal_reason/"
 
 var GrievanceAppealReason grievanceAppealReasonHandler
 
-type grievanceAppealReasonHandler struct{
-	
+type grievanceAppealReasonHandler struct {
 }
 
 //Index this is a landing page
@@ -60,7 +58,6 @@ func (handler *grievanceAppealReasonHandler) Index(c echo.Context) error {
 
 }
 
-
 func (handler *grievanceAppealReasonHandler) Create(c echo.Context) error {
 
 	pp.Println("in the create file...\n")
@@ -74,7 +71,6 @@ func (handler *grievanceAppealReasonHandler) Create(c echo.Context) error {
 
 }
 
-
 func (handler *grievanceAppealReasonHandler) Store(c echo.Context) error {
 
 	grievance_appeal_reason := models.GrievanceAppealReason{}
@@ -83,11 +79,11 @@ func (handler *grievanceAppealReasonHandler) Store(c echo.Context) error {
 		services.SetErrorMessage(c, err.Error())
 		log.Errorf("%s\n", err)
 	}
-	
+
 	endPoint := "/grievance_appeal_reasons/store"
 
 	params := map[string]string{
-		"name":       grievance_appeal_reason.Name,
+		"name":        grievance_appeal_reason.Name,
 		"description": grievance_appeal_reason.Description,
 	}
 
@@ -103,7 +99,6 @@ func (handler *grievanceAppealReasonHandler) Store(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/grm/grievance_appeal_reasons")
 
 }
-
 
 func (handler *grievanceAppealReasonHandler) Show(c echo.Context) error {
 
@@ -134,7 +129,7 @@ func (handler *grievanceAppealReasonHandler) Show(c echo.Context) error {
 	}
 
 	data := services.Map{
-		"data": grievance_appeal_reason,
+		"data":  grievance_appeal_reason,
 		"title": "Show Grievance AppealReason",
 		"new":   false,
 	}
@@ -142,7 +137,6 @@ func (handler *grievanceAppealReasonHandler) Show(c echo.Context) error {
 	return c.Render(http.StatusOK, grievanceAppealReasonViewPath+"show", services.Serve(c, data))
 
 }
-
 
 func (handler *grievanceAppealReasonHandler) Edit(c echo.Context) error {
 
@@ -164,16 +158,16 @@ func (handler *grievanceAppealReasonHandler) Edit(c echo.Context) error {
 		pp.Printf("error getting data: %v\n", resp.StatusCode)
 		return errors.New("error getting response")
 	}
-	
+
 	err := json.Unmarshal(resp.Body, &grievance_appeal_reason)
-	
+
 	if err != nil {
 		pp.Printf("error decoding json data: %v\n", err)
 		return err
 	}
 
 	data := services.Map{
-		"data": grievance_appeal_reason,
+		"data":  grievance_appeal_reason,
 		"title": "Edit Grievance AppealReason",
 		"new":   false,
 	}
@@ -184,9 +178,9 @@ func (handler *grievanceAppealReasonHandler) Edit(c echo.Context) error {
 
 func (handler *grievanceAppealReasonHandler) Update(c echo.Context) error {
 	pp.Println("in the update file...")
-	
+
 	grievance_appeal_reason := models.GrievanceAppealReason{}
-	
+
 	if err := c.Bind(&grievance_appeal_reason); err != nil {
 		log.Errorf("%s\n", err)
 	}
@@ -196,9 +190,9 @@ func (handler *grievanceAppealReasonHandler) Update(c echo.Context) error {
 	endPoint := "/grievance_appeal_reasons/update"
 
 	params := map[string]string{
-		"id":                     grievance_appeal_reason_id,
-		"name":       						grievance_appeal_reason.Name,
-		"description": 						grievance_appeal_reason.Description,
+		"id":          grievance_appeal_reason_id,
+		"name":        grievance_appeal_reason.Name,
+		"description": grievance_appeal_reason.Description,
 	}
 
 	resp := systems.GRMAPI.Send(endPoint, params, true)
@@ -213,7 +207,6 @@ func (handler *grievanceAppealReasonHandler) Update(c echo.Context) error {
 	return c.Redirect(http.StatusSeeOther, "/grm/grievance_appeal_reasons")
 
 }
-
 
 func (handler *grievanceAppealReasonHandler) Delete(c echo.Context) error {
 
@@ -230,7 +223,7 @@ func (handler *grievanceAppealReasonHandler) Delete(c echo.Context) error {
 	endPoint := "/grievance_appeal_reasons/delete"
 
 	params := map[string]string{
-		"id":         Id,
+		"id": Id,
 	}
 
 	resp := systems.GRMAPI.Send(endPoint, params, true)
@@ -242,7 +235,6 @@ func (handler *grievanceAppealReasonHandler) Delete(c echo.Context) error {
 
 	services.SetInfoMessage(c, "Grievance AppealReason deleted successfully")
 
-	return c.Redirect(http.StatusSeeOther,  "/grm/grievance_appeal_reasons")
+	return c.Redirect(http.StatusSeeOther, "/grm/grievance_appeal_reasons")
 
 }
-

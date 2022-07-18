@@ -15,4 +15,6 @@
 # vendor/
 .log/error.log
 .log/info.log
+.logs/error.log
+.logs/info.log
 config.yml

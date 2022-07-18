@@ -142,13 +142,7 @@ func WebRouters(app *echo.Echo) {
 	dashboards := grmApp.Group("/dashboard")
 	{
 		dashboards.GET("", controllers.Dashboard.Index)
-
 	}
-	// help := grmApp.Group("/help")
-	// {
-	// 	help.GET("/contact_us", controllers.Help.contact_us)
-	// 	help.GET("/faq", controllers.Help.faq)
-	// }
 
 	gfudashboard := grmApp.Group("/gfudashboard")
 	{
@@ -191,6 +185,16 @@ func WebRouters(app *echo.Echo) {
 	{
 		login.GET("", controllers.Login.Index)
 		login.GET("/registration", controllers.Login.Registration)
+	}
+
+	forgot := grmApp.Group("/forgot")
+	{
+		forgot.GET("", controllers.Forgot.Index)
+	}
+
+	reset := grmApp.Group("/reset")
+	{
+		reset.GET("", controllers.Reset.Index)
 	}
 
 	//put here all your web routes

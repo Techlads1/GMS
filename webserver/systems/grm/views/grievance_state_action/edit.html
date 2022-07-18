@@ -1,54 +1,163 @@
 {{define "css"}}
+<!-- iCheck for checkboxes and radio inputs -->
+<link
+  rel="stylesheet"
+  href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+/>
+{{ end }} {{define "sidebar"}}
+<aside class="main-sidebar sidebar-light-secondary elevation-4">
+  <!-- Brand Logo -->
+  <a href="#" class="brand-link">
+    <img
+      src="/images/dit-logo.png"
+      alt="DIT"
+      class="brand-image img-circle elevation-3"
+      style="opacity: 0.8"
+    />
+    <span class="brand-text font-weight-light">GMS</span>
+  </a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img
+          src="/adminlte/dist/img/avatar.png"
+          class="img-circle elevation-2"
+          alt="User Image"
+        />
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">User-Profile</a>
+      </div>
+    </div>
 
-{{ end }}
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input
+          class="form-control form-control-sidebar"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
 
-{{define "content"}}
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul
+        class="nav nav-pills nav-sidebar flex-column"
+        data-widget="treeview"
+        role="menu"
+        data-accordion="false"
+      >
+        <!-- Add icons to the links using the .nav-icon class
+   with font-awesome or any other icon font library -->
 
-          <!-- content to be displayed here -->
-          {{ if .errors }}
-            {{range $index, $value := .errors}}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{ $value  }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {{end}}
-          {{end}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-file"></i>
+            <p>
+              Complaints
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/grm/grievances" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Received Complaints</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/grm/grievances" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Assigned Complaints</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/grm/grievances" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Resolved Complaints</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/grm/grievances" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Annonymus Complaint</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/grm/grievances" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Pending Complaints</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+{{end}} {{define "content"}}
 
-          <div class="card">
-            <div class="card-header">
-              <h5  class="my-1 float-left">&nbsp;<i class="fas fa-edit"></i>&nbsp;{{ .title }}</h5>
-                <div class="btn-group btn-group-sm float-right" role="group">
-                    <a href="/grm/grievance_state_actions" class="btn btn-primary" title="List All">
-                        <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
-                    </a>
-                  
-                </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <form action="/grm/grievance_state_actions/update/{{ .data.Id }}"  method="post" class="form">
-                 <input type="hidden" name="csrf" value="{{ .csrf }}">
-                  <input type="hidden" name="id" value="{{ .data.Id }}">
-                  <input type="hidden" name="_method" value="PUT">
+<!-- content to be displayed here -->
+{{ if .errors }} {{range $index, $value := .errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ $value }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{end}} {{end}}
 
-                  {{include "/grm/views/grievance_state_action/form"}}
-                  
-                    <div class="form-group">
-                      <div class="col-md-offset-2 col-md-10">
-                        <button class="btn btn-primary" type="submit"  class="btn btn-primary">Update</button>
-                      </div>
-                    </div>
+<div class="card">
+  <div class="card-header">
+    <h5 class="my-1 float-left">
+      &nbsp;<i class="fas fa-edit"></i>&nbsp;{{ .title }}
+    </h5>
+    <div class="btn-group btn-group-sm float-right" role="group">
+      <a
+        href="/grm/grievance_state_actions"
+        class="btn btn-primary"
+        title="List All"
+      >
+        <i class="fas fa-fw fa-th-list" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <form
+      action="/grm/grievance_state_actions/update/{{ .data.Id }}"
+      method="post"
+      class="form"
+    >
+      <input type="hidden" name="csrf" value="{{ .csrf }}" />
+      <input type="hidden" name="id" value="{{ .data.Id }}" />
+      <input type="hidden" name="_method" value="PUT" />
 
-                </form>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
+      {{include "/grm/views/grievance_state_action/form"}}
 
-  {{end}}
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <button class="btn btn-primary" type="submit" class="btn btn-primary">
+            Update
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- /.card-body -->
+</div>
+<!-- /.card -->
 
-{{define "js"}}
-
-{{ end }}
+{{end}} {{define "js"}} {{ end }}
