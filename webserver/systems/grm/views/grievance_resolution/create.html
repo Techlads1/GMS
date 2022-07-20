@@ -1,0 +1,61 @@
+{{define "css"}}
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css"> {{ end }} {{define "content"}}
+<!-- content to be displayed here -->
+{{ if .infos }} {{range $index, $value := .infos}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ $value }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{end}} {{end}} {{ if .errors }} {{range $index, $value := .errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ $value }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{end}} {{end}}
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="my-1 float-left"><i class="fas fa-info-circle blue"></i>&nbsp;{{ .title }}</h5>
+        <div class="btn-group btn-group-sm float-right" role="group">
+            <a href="/grm/grievance_resolution" class="btn btn-primary" title="List All">
+                <i class=" fas fa-fw fa-th-list" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+    <!-- /.card-header -->
+
+    <div class="card-body">
+        <div class="col-md-12">
+            <form action="/grm/grievance_resolution/store" method="post" class="form">
+                {{include "/grm/views/grievance_resolution/form"}}
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}} {{define "js"}}
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#grievance-description').summernote({
+            placeholder: 'Type your grievance here!',
+            tabsize: 2,
+            height: 500
+        });
+    });
+</script>
+
+{{ end }}

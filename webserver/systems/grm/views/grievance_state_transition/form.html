@@ -1,0 +1,36 @@
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Grievance State Transition Description</label>
+    <div class="col-md-6">
+        <textarea name="description" class="form-control" aria-describedby="Description"
+               >{{ .data.Description }}</textarea>
+               
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Choose Grievance State Transition From</label>
+    <div class="col-md-6">
+        <select class="form-control" name="from_state_id">
+            <option value="{{ .grievance_from_state.Id}}" selected>{{ .grievance_from_state.Name}}</option>
+            {{range $value := .grievance_states}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-md-6 control-label">Choose Grievance State Transition To</label>
+    <div class="col-md-6">
+        <select class="form-control" name="to_state_id">
+            <option value="{{ .grievance_to_state.Id}}" selected>{{ .grievance_to_state.Name}}</option>
+            {{range $value := .grievance_states}}
+                <option value="{{ $value.Id}}">{{$value.Name}}</option>
+            {{end}}
+        </select>
+
+    </div>
+</div>
+

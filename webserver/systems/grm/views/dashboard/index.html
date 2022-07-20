@@ -1,0 +1,128 @@
+{{define "css"}}
+<!-- DataTables js-->
+<link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+
+{{ end }}
+
+{{define "content"}}
+<!-- content to be displayed here -->
+{{ if .infos }}
+{{range $index, $value := .infos}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ $value }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{end}}
+{{end}}
+
+{{ if .errors }}
+{{range $index, $value := .errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ $value }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{end}}
+{{end}}
+
+<!-- content to be displayed here -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="callouts callout-info">
+                    <div class="inner">
+                        <h3>150</h3>
+
+                        <p>Received Complaints</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion-document"></i>
+                    </div>
+                    <a href="../../pages/Datavisualization/home.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="callouts callout-success">
+                    <div class="inner">
+                        <h3>53</h3>
+
+                        <p>Resolved Complaints</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="../../pages/Datavisualization/home.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="callouts callout-warning">
+                    <div class="inner">
+                        <h3>44</h3>
+
+                        <p>Annonymous Complaint</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="../../pages/Datavisualization/home.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="callouts callout-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Unressolved Complaints</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="../../pages/Datavisualization/home.html" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+
+        <!-- /.row (main row) -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
+{{end}}
+
+{{ define "js"}}
+<!-- DataTables -->
+<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- page script -->
+<script>
+    $(function () {
+        $("#datatable").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+
+{{end}}
